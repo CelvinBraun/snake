@@ -51,3 +51,24 @@ class Snake:
             new_y = self.segments[seg - 1].ycor()
             self.segments[seg].goto(new_x, new_y)
         self.segments[0].forward(move_distance)
+
+#move directions
+    def up(self):
+        heading = self.segments[0].heading()
+        if heading != 90:
+            self.segments[0].setheading(90)
+
+    def down(self):
+        heading = self.segments[0].heading()
+        if heading != 270:
+            self.segments[0].setheading(270)
+
+    def left(self):
+        heading = self.segments[0].heading()
+        if heading != 180:
+            self.segments[0].setheading(180)
+
+    def right(self):
+        heading = self.segments[0].heading()
+        if heading != 0:
+            self.segments[0].setheading(0)

@@ -14,6 +14,12 @@ shape_of_snake = "square"
 size_of_snake = 1
 move_distance = 20
 
+#directions
+up = 90
+left = 180
+down = 270
+right = 0
+
 
 class Snake:
 
@@ -55,20 +61,20 @@ class Snake:
 #move directions
     def up(self):
         heading = self.segments[0].heading()
-        if heading != 90:
-            self.segments[0].setheading(90)
+        if heading != down:
+            self.segments[0].setheading(up)
 
     def down(self):
         heading = self.segments[0].heading()
-        if heading != 270:
-            self.segments[0].setheading(270)
+        if heading != up:
+            self.segments[0].setheading(down)
 
     def left(self):
         heading = self.segments[0].heading()
-        if heading != 180:
-            self.segments[0].setheading(180)
+        if heading != right:
+            self.segments[0].setheading(left)
 
     def right(self):
         heading = self.segments[0].heading()
-        if heading != 0:
-            self.segments[0].setheading(0)
+        if heading != left:
+            self.segments[0].setheading(right)

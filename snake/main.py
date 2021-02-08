@@ -1,7 +1,8 @@
 from snake import Snake
-import time
+from food import Food
 
 snake = Snake()
+food = Food()
 game_is_on = True
 
 while game_is_on:
@@ -11,3 +12,7 @@ while game_is_on:
     snake.screen.onkey(key="Down", fun=snake.down)
     snake.screen.onkey(key="Left", fun=snake.left)
     snake.screen.onkey(key="Right", fun=snake.right)
+
+    #collision detection
+    if snake.segments[0].distance(food) < 15:
+        food.spawn_food()

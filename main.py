@@ -35,4 +35,7 @@ while game_is_on:
     y_pos = snake.segments[0].ycor()
 
     if x_pos < left or x_pos > right or y_pos > up or y_pos < down:
-        print("Game over")
+        game_is_on = False
+
+score.game_over()
+snake.screen.exitonclick()

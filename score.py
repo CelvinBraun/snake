@@ -22,3 +22,10 @@ class Score(Turtle):
         self.clear()
         self.score += 1
         self.write(arg=f"Your score: {self.score}", align="center", font=text_font)
+
+    def game_over(self):
+        self.clear()
+        self.goto(0,20)
+        self.write(arg=f"GAME OVER!", align="center", font=text_font)
+        self.goto(0, -20)
+        self.write(arg=f"Your final score: {self.score}", align="center", font=text_font)

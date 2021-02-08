@@ -26,27 +26,39 @@ class Snake:
     def __init__(self):
 
         # initial variables
-        self.start_position = 0
+        self.start_pos_x = 0
+        self.start_pos_y = 0
         self.segments = []
         self.game_is_on = True
 
+        # screen variables
         self.screen = Screen()
         self.screen.setup(width=screen_width, height=screen_height)
         self.screen.bgcolor(background_color)
         self.screen.title(window_title)
         self.screen.tracer(0)
+        self.create_snake()
 
-        # create initial snake body
+    # create initial snake body
+    def create_snake(self):
         for body_part in range(0, 3):
-            # snake default settings
-            new_segment = Turtle()
-            new_segment.color(color_of_snake)
-            new_segment.shape(shape_of_snake)
-            new_segment.shapesize(size_of_snake)
-            new_segment.penup()
-            new_segment.goto(self.start_position, 0)
-            self.start_position -= 20
-            self.segments.append(new_segment)
+            self.add_segment()
+
+    # add segement to snake
+    def add_segment(self):
+        new_segment = Turtle()
+        new_segment.color(color_of_snake)
+        new_segment.shape(shape_of_snake)
+        new_segment.shapesize(size_of_snake)
+        new_segment.penup()
+        new_segment.goto(self.start_pos_x, self.start_pos_y)
+        self.start_pos_x -= 20
+        self.segments.append(new_segment)
+
+    def extend_snake(self, pos_x, pos_y):
+        self.start_pos_x = pos_x
+        self.start_pos_y = pos_y
+        self.add_segment()
 
     def move(self):
         self.screen.update()

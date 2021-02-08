@@ -13,6 +13,6 @@ class Food(Turtle):
         self.spawn_food()
 
     def spawn_food(self):
-        food_spawn_width = random.randint(-280, 280)
-        food_spawn_height = random.randint(-280, 280)
+        food_spawn_width = random.randint(-270, 270)
+        food_spawn_height = random.randint(-270, 270)
         self.goto(food_spawn_width, food_spawn_width)

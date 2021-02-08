@@ -28,6 +28,9 @@ while game_is_on:
     #collision detection
     if snake.segments[0].distance(food) < 15:
         food.spawn_food()
+        x_pos = snake.segments[-1].xcor()
+        y_pos = snake.segments[-1].ycor()
+        snake.extend_snake(x_pos, y_pos)
         score.update_score()
 
     #detecting snake x&y pos
@@ -36,6 +39,8 @@ while game_is_on:
 
     if x_pos < left or x_pos > right or y_pos > up or y_pos < down:
         game_is_on = False
+
+    
 
 score.game_over()
 snake.screen.exitonclick()

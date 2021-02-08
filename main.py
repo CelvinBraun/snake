@@ -18,6 +18,12 @@ down = -280
 
 
 while game_is_on:
+
+    # detecting: when head collsion with body
+    for part in range(1, len(snake.segments)):
+        if snake.segments[0].distance(snake.segments[part]) < 15:
+            game_is_on = False
+
     snake.move()
     snake.screen.listen()
     snake.screen.onkey(key="Up", fun=snake.up)
@@ -33,14 +39,13 @@ while game_is_on:
         snake.extend_snake(x_pos, y_pos)
         score.update_score()
 
-    #detecting snake x&y pos
+    # detecting snake x&y pos
     x_pos = snake.segments[0].xcor()
     y_pos = snake.segments[0].ycor()
 
+    # when over boarder -> game over
     if x_pos < left or x_pos > right or y_pos > up or y_pos < down:
         game_is_on = False
-
-    
 
 score.game_over()
 snake.screen.exitonclick()

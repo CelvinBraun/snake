@@ -1,4 +1,5 @@
 from turtle import Turtle
+import time
 
 #scoreboard settings
 text_color = "white"
@@ -14,18 +15,26 @@ class Score(Turtle):
         self.hideturtle()
         self.color(text_color)
         self.speed("fastest")
-        self.goto(0,text_height)
         self.score = 0
-        self.write(arg=f"Your score: {self.score}", align="center", font=text_font)
+        self.highscore = 0
+        self.update_board()
 
-    def update_score(self):
+    def update_board(self):
         self.clear()
+        self.goto(0, text_height)
+        self.write(arg=f"Score: {self.score} | Highscore: {self.highscore}", align="center", font=text_font)
+
+    def increase_score(self):
         self.score += 1
-        self.write(arg=f"Your score: {self.score}", align="center", font=text_font)
+        self.update_board()
 
     def game_over(self):
+        if self.score > self.highscore:
+            self.highscore = self.score
+        self.score = 0
         self.clear()
-        self.goto(0,20)
+        self.update_board()
+        self.goto(0,0)
         self.write(arg=f"GAME OVER!", align="center", font=text_font)
-        self.goto(0, -20)
-        self.write(arg=f"Your final score: {self.score}", align="center", font=text_font)
+        time.sleep(5)
+        self.update_board()

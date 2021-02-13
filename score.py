@@ -16,7 +16,8 @@ class Score(Turtle):
         self.color(text_color)
         self.speed("fastest")
         self.score = 0
-        self.highscore = 0
+        with open("highscore.txt", "r") as file:
+            self.highscore = int(file.read())
         self.update_board()
 
     def update_board(self):
@@ -31,6 +32,8 @@ class Score(Turtle):
     def game_over(self):
         if self.score > self.highscore:
             self.highscore = self.score
+            with open("highscore.txt", "w") as file:
+                file.write(str(self.highscore))
         self.score = 0
         self.clear()
         self.update_board()
